@@ -1,8 +1,9 @@
 package controlador;
 
-import java.awt.Point;
 import modelo.Flecha;
 import vista.Lienzo;
+
+import java.awt.Point;
 
 public class Controlador {
 	Flecha modelo;
@@ -13,15 +14,17 @@ public class Controlador {
 		vista = _vista;
 	}
 
-	public void calcularFlecha(int[] _p1, int[] _p2) {
-		Point p1 = new Point(_p1[0], _p1[1]);
-		Point p2 = new Point(_p2[0], _p2[1]);
-		modelo = new Flecha(p1, p2);
+	public void calcularFlecha() {
+		modelo = new Flecha(new Point(300, 400), new Point(100, 100));
 		modelo.calcularFlecha();
 		notificar();
 	}
 
 	public void notificar() {
 		vista.actualizar(modelo);
+	}
+
+	public void configurar() {
+		vista.setControlador(this);
 	}
 }
